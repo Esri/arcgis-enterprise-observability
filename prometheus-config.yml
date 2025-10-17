@@ -1,0 +1,60 @@
+alerting: 
+alertmanagers:
+  - static_configs:
+    - targets: null
+global:
+  evaluation_interval: 15s
+  scrape_interval: 60s
+  scrape_timeout: 30s
+rule_files:
+  - record_rules.yml
+  - alert_rules.yml
+scrape_configs:
+  - job_name: federated_portal_API_key
+    http_sd_configs:
+      - url: 'https://example.com/server/monitoring/discovery'
+        refresh_interval: 60s
+        tls_config:
+          insecure_skip_verify: false
+        bearer_token: 'portal_API_key token'
+    bearer_token: 'portal_API_key token'
+    metrics_path: '/arcgis/monitoring/metrics'
+    scheme: https
+    tls_config:
+      insecure_skip_verify: false
+  - job_name: federated_server_admin_token
+    http_sd_configs:
+      - url: 'https://example.com/server/monitoring/discovery'
+        refresh_interval: 60s
+        tls_config:
+          insecure_skip_verify: false
+        http_headers:
+          Referer:
+            values: ['ARCGIS.COM']
+        bearer_token: 'server admin token'
+    bearer_token: 'server admin token'
+    metrics_path: '/arcgis/monitoring/metrics'
+    http_headers:
+      Referer:
+        values: ['ARCGIS.COM']
+    scheme: https
+    tls_config:
+      insecure_skip_verify: false
+  - job_name: stand_alone_server_admin_token
+    http_sd_configs:
+      - url: 'https://example.com/server/monitoring/discovery'
+        refresh_interval: 60s
+        tls_config:
+          insecure_skip_verify: false
+        http_headers:
+          Referer:
+            values: ['ARCGIS.COM']
+        bearer_token: 'server admin token'
+    bearer_token: 'server admin token'
+    metrics_path: '/arcgis/monitoring/metrics'
+    http_headers:
+      Referer:
+        values: ['ARCGIS.COM']
+    scheme: https
+    tls_config:
+      insecure_skip_verify: false
