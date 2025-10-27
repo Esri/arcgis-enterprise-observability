@@ -1,0 +1,1 @@
+The `.json` files in this directory are example Grafana dashboard templates for common use cases for ArcGIS Enterprise metrics. You can use them to [import a dashboard](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/import-dashboards/) by uploading the file to your Grafana server.
