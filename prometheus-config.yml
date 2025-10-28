@@ -1,0 +1,35 @@
+global:
+  evaluation_interval: 15s
+  scrape_interval: 60s
+  scrape_timeout: 30s
+scrape_configs:
+  - job_name: federated_server
+    http_sd_configs:
+      - url: 'https://example.com/server/monitoring/discovery'
+        refresh_interval: 60s
+        tls_config:
+          insecure_skip_verify: false
+        bearer_token: 'portal_API_key'
+    bearer_token: 'portal_API_key'
+    metrics_path: '/arcgis/monitoring/metrics'
+    scheme: https
+    tls_config:
+      insecure_skip_verify: false
+  - job_name: standalone_server
+    http_sd_configs:
+      - url: 'https://example.com/server/monitoring/discovery'
+        refresh_interval: 60s
+        tls_config:
+          insecure_skip_verify: false
+        http_headers:
+          Referer:
+            values: ['ARCGIS.COM']
+        bearer_token: 'server_admin_token'
+    bearer_token: 'server_admin_token'
+    metrics_path: '/arcgis/monitoring/metrics'
+    http_headers:
+      Referer:
+        values: ['ARCGIS.COM']
+    scheme: https
+    tls_config:
+      insecure_skip_verify: false
