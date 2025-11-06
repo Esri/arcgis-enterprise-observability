@@ -1,6 +1,6 @@
 # ArcGIS Enterprise observability resources
 
-This repository contains resources related to configuring observability capabilities for ArcGIS Enterprise. For full documentation of these features, refer to the instructions in the [Early Adopter Community](https://www.esri.com/en-us/user-research-testing/early-adopter). 
+This repository contains resources related to configuring beta observability capabilities for ArcGIS Enterprise 12.0. For full documentation of these features, refer to the instructions in the [Early Adopter Community](https://www.esri.com/en-us/user-research-testing/early-adopter). 
 
 ## Features
 
@@ -51,5 +51,6 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
 
 A copy of the license is available in the repository's [LICENSE.txt](LICENSE.txt?raw=true) file.
