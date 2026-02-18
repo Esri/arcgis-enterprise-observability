@@ -26,7 +26,7 @@ This repository contains the following resources:
 ## Resources
 - Full documentation of the beta observability features is available in the [Early Adopter Community](https://www.esri.com/en-us/user-research-testing/early-adopter). 
 - Additional documentation on [monitoring ArcGIS Enterprise](https://enterprise.arcgis.com/en/portal/latest/administer/windows/monitoring-best-practices.htm).
-- The [Observability pillar](https://architecturedev.arcgis.com/en/framework/architecture-pillars/observability/overview.html) of a well-architected ArcGIS system.
+- The [Observability pillar](https://architecture.arcgis.com/en/framework/architecture-pillars/observability/overview.html) of a well-architected ArcGIS system.
 
 ## Issues
 
@@ -54,3 +54,4 @@ limitations under the License.
 
 
 A copy of the license is available in the repository's [LICENSE.txt](LICENSE.txt?raw=true) file.
+
