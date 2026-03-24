@@ -1,12 +1,12 @@
 global:
-  evaluation_interval: 15s
-  scrape_interval: 60s
-  scrape_timeout: 30s
+  evaluation_interval: 1m
+  scrape_interval: 1m
+  scrape_timeout: 1m
 scrape_configs:
   - job_name: federated_server
     http_sd_configs:
       - url: 'https://example.com/server/monitoring/discovery'
-        refresh_interval: 60s
+        refresh_interval: 5m
         tls_config:
           insecure_skip_verify: false
         bearer_token: 'portal_API_key'
@@ -18,7 +18,7 @@ scrape_configs:
   - job_name: standalone_server
     http_sd_configs:
       - url: 'https://example.com/server/monitoring/discovery'
-        refresh_interval: 60s
+        refresh_interval: 5m
         tls_config:
           insecure_skip_verify: false
         http_headers:
