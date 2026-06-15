@@ -22,7 +22,7 @@
   "links": [],
   "panels": [
     {
-      "collapsed": true,
+      "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -30,336 +30,335 @@
         "y": 0
       },
       "id": 33,
-      "panels": [
+      "panels": [],
+      "title": "Uptime and Errors",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ArcGIS_datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 100,
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "barWidthFactor": 0.2,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 4,
+            "pointSize": 6,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "dashed"
+            }
+          },
+          "displayName": "${__field.labels.job},${__field.labels.instance}",
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-green",
+                "value": 0
+              },
+              {
+                "color": "dark-red",
+                "value": 90
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 0,
+        "y": 1
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Min",
+          "sortDesc": false
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${ArcGIS_datasource}"
           },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "up{}*100 or relational_store_is_healthy*100",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "Uptime (%)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ArcGIS_datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "dashed"
+            }
+          },
+          "displayName": "${__field.labels.job},${__field.labels.serviceName},${__field.labels.serviceType}, ${__field.labels.operation},${__field.labels.username}",
+          "fieldMinMax": false,
+          "mappings": [],
+          "min": 0,
+          "noValue": "No errors.",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-green",
+                "value": 0
               },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "axisSoftMax": 100,
-                "axisSoftMin": 0,
-                "barAlignment": 0,
-                "barWidthFactor": 0.2,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 4,
-                "pointSize": 6,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "dashed"
-                }
-              },
-              "displayName": "${__field.labels.job},${__field.labels.instance}",
-              "mappings": [],
-              "noValue": "0",
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "dark-green",
-                    "value": 0
-                  },
-                  {
-                    "color": "dark-red",
-                    "value": 90
-                  }
-                ]
+              {
+                "color": "dark-red",
+                "value": 5
               }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 10,
-            "w": 7,
-            "x": 0,
-            "y": 1
-          },
-          "id": 2,
-          "options": {
-            "legend": {
-              "calcs": [
-                "min"
-              ],
-              "displayMode": "table",
-              "placement": "bottom",
-              "showLegend": true,
-              "sortBy": "Min",
-              "sortDesc": false
-            },
-            "tooltip": {
-              "hideZeros": false,
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "12.1.1",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "${ArcGIS_datasource}"
-              },
-              "disableTextWrap": false,
-              "editorMode": "code",
-              "expr": "up{}*100 or relational_store_is_healthy*100",
-              "fullMetaSearch": false,
-              "includeNullMetadata": true,
-              "legendFormat": "__auto",
-              "range": true,
-              "refId": "A",
-              "useBackend": false
-            }
-          ],
-          "title": "Uptime (%)",
-          "type": "timeseries"
+            ]
+          }
         },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 7,
+        "y": 1
+      },
+      "id": 14,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${ArcGIS_datasource}"
           },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "thresholds"
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": " sum by (job, serviceName, serviceType, operation, username) (rate(requests_failed_total{job=~\"$job\",serviceType=~\"$serviceType\",serviceName=~\"$serviceName\",operation=~\"$operation\",username=~\"$username\"}[5m]))/ sum by (job, serviceName, serviceType, operation, username) (rate(requests_total{job=~\"$job\",serviceType=~\"$serviceType\",serviceName=~\"$serviceName\",operation=~\"$operation\",username=~\"$username\"}[5m]))*100>0",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "Service Error (%) ",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${K8_datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "dashed"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
               },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "dashed"
-                }
-              },
-              "displayName": "${__field.labels.job},${__field.labels.serviceName},${__field.labels.serviceType}, ${__field.labels.operation},${__field.labels.username}",
-              "fieldMinMax": false,
-              "mappings": [],
-              "min": 0,
-              "noValue": "No errors.",
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "dark-green",
-                    "value": 0
-                  },
-                  {
-                    "color": "dark-red",
-                    "value": 5
-                  }
-                ]
+              {
+                "color": "dark-yellow",
+                "value": 2
               }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 10,
-            "w": 7,
-            "x": 7,
-            "y": 1
-          },
-          "id": 14,
-          "options": {
-            "legend": {
-              "calcs": [
-                "max",
-                "mean"
-              ],
-              "displayMode": "table",
-              "placement": "bottom",
-              "showLegend": true,
-              "sortBy": "Max",
-              "sortDesc": true
-            },
-            "tooltip": {
-              "hideZeros": false,
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "12.1.1",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "${ArcGIS_datasource}"
-              },
-              "disableTextWrap": false,
-              "editorMode": "code",
-              "expr": " sum by (job, serviceName, serviceType, operation, username) (rate(requests_failed_total{job=~\"$job\",serviceType=~\"$serviceType\",serviceName=~\"$serviceName\",operation=~\"$operation\",username=~\"$username\"}[5m]))/ sum by (job, serviceName, serviceType, operation, username) (rate(requests_total{job=~\"$job\",serviceType=~\"$serviceType\",serviceName=~\"$serviceName\",operation=~\"$operation\",username=~\"$username\"}[5m]))*100>0",
-              "fullMetaSearch": false,
-              "includeNullMetadata": true,
-              "legendFormat": "__auto",
-              "range": true,
-              "refId": "A",
-              "useBackend": false
-            }
-          ],
-          "title": "Service Error (%) ",
-          "type": "timeseries"
+            ]
+          }
         },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 14,
+        "y": 1
+      },
+      "id": 80,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${K8_datasource}"
           },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "dashed"
-                }
-              },
-              "fieldMinMax": false,
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": 0
-                  },
-                  {
-                    "color": "dark-yellow",
-                    "value": 2
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 10,
-            "w": 7,
-            "x": 14,
-            "y": 1
-          },
-          "id": 80,
-          "options": {
-            "legend": {
-              "calcs": [
-                "max",
-                "mean"
-              ],
-              "displayMode": "table",
-              "placement": "bottom",
-              "showLegend": true,
-              "sortBy": "Max",
-              "sortDesc": true
-            },
-            "tooltip": {
-              "hideZeros": false,
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "12.1.1",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "${K8_datasource}"
-              },
-              "disableTextWrap": false,
-              "editorMode": "code",
-              "expr": "sum by (job, label_arcgis_gis_service_name) (\r\n  (\r\n    kube_pod_status_ready{\r\n      pod=~\"$pod\",\r\n      condition=\"true\"\r\n    } == bool 0\r\n  )\r\n  * on (pod, namespace)\r\n    group_left(label_arcgis_gis_service_name)\r\n    kube_pod_labels{\r\n      namespace=\"arcgis\",\r\n      label_arcgis_gis_service_name!=\"\"\r\n    }\r\n)>0\r\n",
-              "fullMetaSearch": false,
-              "includeNullMetadata": true,
-              "legendFormat": "{{label_arcgis_gis_service_name}}",
-              "range": true,
-              "refId": "A",
-              "useBackend": false
-            }
-          ],
-          "title": "ArcGIS Services with Non‑Ready Pods",
-          "type": "timeseries"
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "sum by (job, label_arcgis_gis_service_name) (\r\n  (\r\n    kube_pod_status_ready{\r\n      pod=~\"$pod\",\r\n      condition=\"true\"\r\n    } == bool 0\r\n  )\r\n  * on (pod, namespace)\r\n    group_left(label_arcgis_gis_service_name)\r\n    kube_pod_labels{\r\n      namespace=\"arcgis\",\r\n      label_arcgis_gis_service_name!=\"\"\r\n    }\r\n)>0\r\n",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "legendFormat": "{{label_arcgis_gis_service_name}}",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
         }
       ],
-      "title": "Uptime and Errors",
-      "type": "row"
+      "title": "ArcGIS Services with Non‑Ready Pods",
+      "type": "timeseries"
     },
     {
       "collapsed": true,
@@ -367,7 +366,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 1
+        "y": 11
       },
       "id": 32,
       "panels": [
@@ -437,7 +436,7 @@
             "h": 10,
             "w": 7,
             "x": 0,
-            "y": 2
+            "y": 12
           },
           "id": 18,
           "options": {
@@ -545,7 +544,7 @@
             "h": 10,
             "w": 7,
             "x": 7,
-            "y": 2
+            "y": 12
           },
           "id": 19,
           "options": {
@@ -653,7 +652,7 @@
             "h": 10,
             "w": 7,
             "x": 14,
-            "y": 2
+            "y": 12
           },
           "id": 20,
           "options": {
@@ -705,7 +704,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 2
+        "y": 12
       },
       "id": 63,
       "panels": [
@@ -775,7 +774,7 @@
             "h": 10,
             "w": 7,
             "x": 0,
-            "y": 3
+            "y": 23
           },
           "id": 62,
           "options": {
@@ -827,7 +826,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 3
+        "y": 13
       },
       "id": 54,
       "panels": [
@@ -899,7 +898,7 @@
             "h": 10,
             "w": 7,
             "x": 0,
-            "y": 420
+            "y": 746
           },
           "id": 26,
           "options": {
@@ -1009,7 +1008,7 @@
             "h": 10,
             "w": 7,
             "x": 8,
-            "y": 420
+            "y": 746
           },
           "id": 29,
           "options": {
@@ -1117,7 +1116,7 @@
             "h": 10,
             "w": 7,
             "x": 15,
-            "y": 420
+            "y": 746
           },
           "id": 28,
           "options": {
@@ -1162,340 +1161,339 @@
       "type": "row"
     },
     {
-      "collapsed": true,
+      "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 4
+        "y": 14
       },
       "id": 34,
-      "panels": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ArcGIS_datasource}"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "displayName": "${__field.labels.job},${__field.labels.serviceName}, ${__field.labels.serviceType}",
-              "fieldMinMax": false,
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": 0
-                  },
-                  {
-                    "color": "dark-orange",
-                    "value": 5
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 10,
-            "w": 7,
-            "x": 0,
-            "y": 421
-          },
-          "id": 13,
-          "options": {
-            "legend": {
-              "calcs": [
-                "max",
-                "mean"
-              ],
-              "displayMode": "table",
-              "placement": "bottom",
-              "showLegend": true,
-              "sortBy": "Max",
-              "sortDesc": true
-            },
-            "tooltip": {
-              "hideZeros": false,
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "12.1.1",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "${ArcGIS_datasource}"
-              },
-              "disableTextWrap": false,
-              "editorMode": "code",
-              "expr": " topk(50,sum by (job, serviceName, serviceType) (rate( requests_response_time_seconds_count{job=~\"$job\",folderName=~\"$folderName\",serviceType=~\"$serviceType\",serviceName=~\"$serviceName\",operation=~\"$operation\", operation=~\"^.+$\"}[5m])))>0 ",
-              "fullMetaSearch": false,
-              "includeNullMetadata": true,
-              "legendFormat": "__auto",
-              "range": true,
-              "refId": "A",
-              "useBackend": false
-            }
-          ],
-          "title": "Service (req/s) ",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ArcGIS_datasource}"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "displayName": "${__field.labels.job},${__field.labels.username}",
-              "fieldMinMax": false,
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": 0
-                  },
-                  {
-                    "color": "dark-orange",
-                    "value": 5
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 10,
-            "w": 7,
-            "x": 7,
-            "y": 421
-          },
-          "id": 22,
-          "options": {
-            "legend": {
-              "calcs": [
-                "max",
-                "mean"
-              ],
-              "displayMode": "table",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "hideZeros": false,
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "12.1.1",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "${ArcGIS_datasource}"
-              },
-              "disableTextWrap": false,
-              "editorMode": "code",
-              "expr": "topk(10,sum by (job, username) (rate(requests_response_time_seconds_counter_total{job=~\"$job\",folderName=~\"$folderName\",serviceType=~\"$serviceType\",serviceName=~\"$serviceName\",operation=~\"$operation\",username=~\"$username\", operation=~\"^.+$\"}[5m])))>0",
-              "fullMetaSearch": false,
-              "includeNullMetadata": true,
-              "legendFormat": "__auto",
-              "range": true,
-              "refId": "A",
-              "useBackend": false
-            }
-          ],
-          "title": "User (req/s) ",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ArcGIS_datasource}"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "displayName": "${__field.labels.job},${__field.labels.appType},${__field.labels.serviceName},${__field.labels.username},${__field.labels.operation}",
-              "fieldMinMax": false,
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": 0
-                  },
-                  {
-                    "color": "dark-orange",
-                    "value": 5
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 10,
-            "w": 7,
-            "x": 14,
-            "y": 421
-          },
-          "id": 23,
-          "options": {
-            "legend": {
-              "calcs": [
-                "max",
-                "mean"
-              ],
-              "displayMode": "table",
-              "placement": "bottom",
-              "showLegend": true,
-              "sortBy": "Max",
-              "sortDesc": true
-            },
-            "tooltip": {
-              "hideZeros": false,
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "12.1.1",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "${ArcGIS_datasource}"
-              },
-              "disableTextWrap": false,
-              "editorMode": "code",
-              "expr": "topk(10,sum by (job,appType, serviceName, username, operation) (rate(requests_response_time_seconds_counter_total{job=~\"$job\",folderName=~\"$folderName\",serviceType=~\"$serviceType\",serviceName=~\"$serviceName\",operation=~\"$operation\",username=~\"$username\", operation=~\"^.+$\"}[5m])))>0",
-              "fullMetaSearch": false,
-              "includeNullMetadata": true,
-              "legendFormat": "__auto",
-              "range": true,
-              "refId": "A",
-              "useBackend": false
-            }
-          ],
-          "title": "AppType, Service, User, Operation (req/s) ",
-          "type": "timeseries"
-        }
-      ],
+      "panels": [],
       "title": "User Load: Service Requests Per Second",
       "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ArcGIS_datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "${__field.labels.job},${__field.labels.serviceName}, ${__field.labels.serviceType}",
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "dark-orange",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 0,
+        "y": 15
+      },
+      "id": 13,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ArcGIS_datasource}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": " topk(50,sum by (job, serviceName, serviceType) (rate( requests_total{job=~\"$job\",folderName=~\"$folderName\",serviceType=~\"$serviceType\",serviceName=~\"$serviceName\",operation=~\"$operation\", operation=~\"^.+$\"}[5m])))>0 ",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "Service (req/s) ",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ArcGIS_datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "${__field.labels.job},${__field.labels.username}",
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "dark-orange",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 7,
+        "y": 15
+      },
+      "id": 22,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ArcGIS_datasource}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "topk(10,sum by (job, username) (rate(requests_total{job=~\"$job\",folderName=~\"$folderName\",serviceType=~\"$serviceType\",serviceName=~\"$serviceName\",operation=~\"$operation\",username=~\"$username\", operation=~\"^.+$\"}[5m])))>0",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "User (req/s) ",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ArcGIS_datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "${__field.labels.job},${__field.labels.appType},${__field.labels.serviceName},${__field.labels.username},${__field.labels.operation}",
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "dark-orange",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 14,
+        "y": 15
+      },
+      "id": 23,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ArcGIS_datasource}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "topk(10,sum by (job,appType, serviceName, username, operation) (rate(requests_total{job=~\"$job\",folderName=~\"$folderName\",serviceType=~\"$serviceType\",serviceName=~\"$serviceName\",operation=~\"$operation\",username=~\"$username\", operation=~\"^.+$\"}[5m])))>0",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "AppType, Service, User, Operation (req/s) ",
+      "type": "timeseries"
     },
     {
       "collapsed": true,
@@ -1503,7 +1501,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 5
+        "y": 25
       },
       "id": 55,
       "panels": [
@@ -1573,7 +1571,7 @@
             "h": 10,
             "w": 7,
             "x": 0,
-            "y": 402
+            "y": 728
           },
           "id": 21,
           "options": {
@@ -1681,7 +1679,7 @@
             "h": 10,
             "w": 7,
             "x": 7,
-            "y": 402
+            "y": 728
           },
           "id": 5,
           "options": {
@@ -1789,7 +1787,7 @@
             "h": 10,
             "w": 7,
             "x": 14,
-            "y": 402
+            "y": 728
           },
           "id": 15,
           "options": {
@@ -1841,7 +1839,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 6
+        "y": 26
       },
       "id": 35,
       "panels": [
@@ -1911,7 +1909,7 @@
             "h": 10,
             "w": 7,
             "x": 0,
-            "y": 7
+            "y": 27
           },
           "id": 8,
           "options": {
@@ -2020,7 +2018,7 @@
             "h": 10,
             "w": 7,
             "x": 7,
-            "y": 7
+            "y": 27
           },
           "id": 64,
           "options": {
@@ -2127,7 +2125,7 @@
             "h": 10,
             "w": 7,
             "x": 0,
-            "y": 135
+            "y": 67
           },
           "id": 65,
           "options": {
@@ -2235,7 +2233,7 @@
             "h": 10,
             "w": 7,
             "x": 7,
-            "y": 135
+            "y": 67
           },
           "id": 81,
           "options": {
@@ -2342,7 +2340,7 @@
             "h": 10,
             "w": 7,
             "x": 0,
-            "y": 145
+            "y": 77
           },
           "id": 78,
           "options": {
@@ -2389,868 +2387,867 @@
       "type": "row"
     },
     {
-      "collapsed": true,
+      "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 7
+        "y": 27
       },
       "id": 59,
-      "panels": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${K8_datasource}"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "axisSoftMax": 100,
-                "axisSoftMin": 0,
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "dashed"
-                }
-              },
-              "displayName": "${__field.labels.nodename}",
-              "fieldMinMax": false,
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": 0
-                  },
-                  {
-                    "color": "dark-orange",
-                    "value": 80
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 10,
-            "w": 7,
-            "x": 0,
-            "y": 8
-          },
-          "id": 60,
-          "options": {
-            "legend": {
-              "calcs": [
-                "max",
-                "mean"
-              ],
-              "displayMode": "table",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "hideZeros": false,
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "12.1.1",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "${K8_datasource}"
-              },
-              "disableTextWrap": false,
-              "editorMode": "code",
-              "expr": " 100 - (\r\n  avg by (job,instance) (\r\n    rate(node_cpu_seconds_total{mode=\"idle\"}[1m])\r\n  )\r\n  * on(instance)\r\n    group_left(nodename)\r\n    max by (instance, nodename) (node_uname_info)\r\n  * 100\r\n)",
-              "fullMetaSearch": false,
-              "includeNullMetadata": true,
-              "legendFormat": "__auto",
-              "range": true,
-              "refId": "A",
-              "useBackend": false
-            }
-          ],
-          "title": "CPU Used (%) by Node",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${K8_datasource}"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "dashed"
-                }
-              },
-              "displayName": "${__field.labels.nodename}",
-              "fieldMinMax": false,
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": 0
-                  },
-                  {
-                    "color": "dark-orange",
-                    "value": 1
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 10,
-            "w": 7,
-            "x": 7,
-            "y": 8
-          },
-          "id": 3,
-          "options": {
-            "legend": {
-              "calcs": [
-                "max",
-                "mean"
-              ],
-              "displayMode": "table",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "hideZeros": false,
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "12.1.1",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "${K8_datasource}"
-              },
-              "disableTextWrap": false,
-              "editorMode": "code",
-              "expr": "100 * (\r\n  1 - (\r\n    node_memory_MemAvailable_bytes\r\n    / node_memory_MemTotal_bytes\r\n    * on (instance)\r\n      group_left(nodename)\r\n      max by (instance, nodename) (node_uname_info)\r\n  )\r\n)",
-              "fullMetaSearch": false,
-              "includeNullMetadata": true,
-              "legendFormat": "__auto",
-              "range": true,
-              "refId": "A",
-              "useBackend": false
-            }
-          ],
-          "title": "Memory Used (%) by Node",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${K8_datasource}"
-          },
-          "description": "",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "displayName": "${__field.labels.nodename}",
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": 0
-                  },
-                  {
-                    "color": "red",
-                    "value": 80.0002
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 10,
-            "w": 7,
-            "x": 14,
-            "y": 8
-          },
-          "id": 43,
-          "options": {
-            "legend": {
-              "calcs": [
-                "max",
-                "mean"
-              ],
-              "displayMode": "table",
-              "placement": "bottom",
-              "showLegend": true,
-              "sortBy": "Max",
-              "sortDesc": true
-            },
-            "tooltip": {
-              "hideZeros": false,
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "12.1.1",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "${K8_datasource}"
-              },
-              "editorMode": "code",
-              "expr": "100 *\r\n(\r\n  1 -\r\n  (\r\n    avg by (job,instance) (\r\n      node_filesystem_free_bytes{\r\n        fstype!~\"tmpfs|overlay|squashfs\",\r\n        mountpoint!~\"/var/lib/docker|/var/lib/kubelet\"\r\n      }\r\n    )\r\n    /\r\n    avg by (job,instance) (\r\n      node_filesystem_size_bytes{\r\n        fstype!~\"tmpfs|overlay|squashfs\",\r\n        mountpoint!~\"/var/lib/docker|/var/lib/kubelet\"\r\n      }\r\n    )\r\n  )\r\n)\r\n* on (instance)\r\n  group_left (nodename)\r\n  max by (job,instance, nodename) (node_uname_info)",
-              "legendFormat": "__auto",
-              "range": true,
-              "refId": "A"
-            }
-          ],
-          "title": "Disk Used (%) by Node",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${K8_datasource}"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "axisSoftMin": 0,
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "displayName": "${__field.labels.nodename}",
-              "fieldMinMax": false,
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": 0
-                  },
-                  {
-                    "color": "dark-orange",
-                    "value": 80
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 10,
-            "w": 7,
-            "x": 0,
-            "y": 106
-          },
-          "id": 70,
-          "options": {
-            "legend": {
-              "calcs": [
-                "max",
-                "mean"
-              ],
-              "displayMode": "table",
-              "placement": "bottom",
-              "showLegend": true,
-              "sortBy": "Max",
-              "sortDesc": true
-            },
-            "tooltip": {
-              "hideZeros": false,
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "12.1.1",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "${K8_datasource}"
-              },
-              "disableTextWrap": false,
-              "editorMode": "code",
-              "expr": "sum by (job, instance, nodename) (\r\n  rate(node_cpu_seconds_total{mode!=\"idle\"}[1m])\r\n  * on (instance)\r\n    group_left (nodename)\r\n    max by (job, instance, nodename) (node_uname_info)\r\n)",
-              "fullMetaSearch": false,
-              "includeNullMetadata": true,
-              "legendFormat": "__auto",
-              "range": true,
-              "refId": "A",
-              "useBackend": false
-            }
-          ],
-          "title": "CPU Used (cores) by Node",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${K8_datasource}"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "dashed"
-                }
-              },
-              "displayName": "${__field.labels.nodename}",
-              "fieldMinMax": false,
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": 0
-                  },
-                  {
-                    "color": "dark-orange",
-                    "value": 1
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 10,
-            "w": 7,
-            "x": 7,
-            "y": 106
-          },
-          "id": 72,
-          "options": {
-            "legend": {
-              "calcs": [
-                "max",
-                "mean"
-              ],
-              "displayMode": "table",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "hideZeros": false,
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "12.1.1",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "${K8_datasource}"
-              },
-              "disableTextWrap": false,
-              "editorMode": "code",
-              "expr": "(\r\n  node_memory_MemTotal_bytes\r\n  - node_memory_MemAvailable_bytes\r\n)\r\n/\r\n1024 / 1024 / 1024\r\n* on (instance)\r\n  group_left (nodename)\r\n  max by (instance, nodename) (node_uname_info)",
-              "fullMetaSearch": false,
-              "includeNullMetadata": true,
-              "legendFormat": "__auto",
-              "range": true,
-              "refId": "A",
-              "useBackend": false
-            }
-          ],
-          "title": "Memory Used (GB) by Node",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${K8_datasource}"
-          },
-          "description": "",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "displayName": "${__field.labels.nodename}",
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": 0
-                  },
-                  {
-                    "color": "red",
-                    "value": 80.0002
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 10,
-            "w": 7,
-            "x": 14,
-            "y": 106
-          },
-          "id": 71,
-          "options": {
-            "legend": {
-              "calcs": [
-                "max",
-                "mean"
-              ],
-              "displayMode": "table",
-              "placement": "bottom",
-              "showLegend": true,
-              "sortBy": "Max",
-              "sortDesc": true
-            },
-            "tooltip": {
-              "hideZeros": false,
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "12.1.1",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "${K8_datasource}"
-              },
-              "editorMode": "code",
-              "expr": "sum by (job,instance, nodename) (\r\n  node_filesystem_size_bytes{\r\n    fstype!~\"tmpfs|overlay|squashfs\"\r\n  }\r\n  -\r\n  node_filesystem_free_bytes{\r\n    fstype!~\"tmpfs|overlay|squashfs\"\r\n  }\r\n)\r\n/\r\n1024 / 1024 / 1024\r\n* on (instance)\r\n  group_left (nodename)\r\n  max by (job,instance, nodename) (node_uname_info)",
-              "legendFormat": "__auto",
-              "range": true,
-              "refId": "A"
-            }
-          ],
-          "title": "Disk Used (GB) by Node",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${K8_datasource}"
-          },
-          "description": "High value means the container is frequently throttled.\nThis indicates CPU starvation, which can degrade performance.\nConsider: Increase CPU limits, Optimize workload, Use autoscaling.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "displayName": "${__field.labels.label_arcgis_gis_service_name}, ${__field.labels.pod}",
-              "mappings": [],
-              "noValue": "Healthy. No pods restarted during this time interval.",
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": 0
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 10,
-            "w": 7,
-            "x": 0,
-            "y": 116
-          },
-          "id": 56,
-          "options": {
-            "legend": {
-              "calcs": [
-                "max"
-              ],
-              "displayMode": "table",
-              "placement": "bottom",
-              "showLegend": true,
-              "sortBy": "Max",
-              "sortDesc": true
-            },
-            "tooltip": {
-              "hideZeros": false,
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "12.1.1",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "${K8_datasource}"
-              },
-              "editorMode": "code",
-              "expr": "sum by (job, pod, label_arcgis_gis_service_name) (\r\n  rate(\r\n    container_cpu_cfs_throttled_periods_total{\r\n      container!=\"\",\r\n    }[1m]\r\n  )\r\n  * on (pod, namespace)\r\n    group_left (label_arcgis_gis_service_name)\r\n    kube_pod_labels{\r\n      namespace=\"arcgis\",\r\n      label_arcgis_gis_service_name!=\"\"\r\n    }\r\n)",
-              "legendFormat": "__auto",
-              "range": true,
-              "refId": "A"
-            }
-          ],
-          "title": "CPU Throttling Rate by ArcGIS Service and Pod",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${K8_datasource}"
-          },
-          "description": "",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "axisSoftMin": 0,
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "displayName": "${__field.labels.label_arcgis_gis_service_name}, ${__field.labels.pod},${__field.labels.node}",
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": 0
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 10,
-            "w": 7,
-            "x": 7,
-            "y": 116
-          },
-          "id": 48,
-          "options": {
-            "legend": {
-              "calcs": [
-                "max",
-                "mean"
-              ],
-              "displayMode": "table",
-              "placement": "bottom",
-              "showLegend": true,
-              "sortBy": "Max",
-              "sortDesc": true
-            },
-            "tooltip": {
-              "hideZeros": false,
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "12.1.1",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "${K8_datasource}"
-              },
-              "editorMode": "code",
-              "expr": "sum by (job, pod, namespace, node, label_arcgis_gis_service_name) (\r\n  (\r\n    rate(\r\n      container_network_transmit_bytes_total{\r\n        node=~\"$nodeName\",\r\n        pod=~\"$pod\"\r\n      }[1m]\r\n    )\r\n    / 1024 / 1024\r\n  )\r\n  * on (pod, namespace)\r\n    group_left(label_arcgis_gis_service_name)\r\n    kube_pod_labels{\r\n      namespace=\"arcgis\",\r\n      label_arcgis_gis_service_name!=\"\"\r\n    }\r\n)\r\n> 0",
-              "legendFormat": "__auto",
-              "range": true,
-              "refId": "A"
-            }
-          ],
-          "title": "Network (Mbps) by Service, Pod, Node",
-          "type": "timeseries"
-        }
-      ],
+      "panels": [],
       "title": "Infrastructure Load",
       "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${K8_datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 100,
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "dashed"
+            }
+          },
+          "displayName": "${__field.labels.nodename}",
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "dark-orange",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 0,
+        "y": 28
+      },
+      "id": 60,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${K8_datasource}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": " 100 - (\r\n  avg by (job,instance) (\r\n    rate(node_cpu_seconds_total{mode=\"idle\"}[1m])\r\n  )\r\n  * on(instance)\r\n    group_left(nodename)\r\n    max by (instance, nodename) (node_uname_info)\r\n  * 100\r\n)",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "CPU Used (%) by Node",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${K8_datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "dashed"
+            }
+          },
+          "displayName": "${__field.labels.nodename}",
+          "fieldMinMax": false,
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "dark-orange",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 7,
+        "y": 28
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${K8_datasource}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "100 * (\r\n  1 - (\r\n    node_memory_MemAvailable_bytes\r\n    / node_memory_MemTotal_bytes\r\n    * on (instance)\r\n      group_left(nodename)\r\n      max by (instance, nodename) (node_uname_info)\r\n  )\r\n)",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "Memory Used (%) by Node",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${K8_datasource}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "${__field.labels.nodename}",
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80.0002
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 14,
+        "y": 28
+      },
+      "id": 43,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${K8_datasource}"
+          },
+          "editorMode": "code",
+          "expr": "100 *\r\n(\r\n  1 -\r\n  (\r\n    avg by (job,instance) (\r\n      node_filesystem_free_bytes{\r\n        fstype!~\"tmpfs|overlay|squashfs\",\r\n        mountpoint!~\"/var/lib/docker|/var/lib/kubelet\"\r\n      }\r\n    )\r\n    /\r\n    avg by (job,instance) (\r\n      node_filesystem_size_bytes{\r\n        fstype!~\"tmpfs|overlay|squashfs\",\r\n        mountpoint!~\"/var/lib/docker|/var/lib/kubelet\"\r\n      }\r\n    )\r\n  )\r\n)\r\n* on (instance)\r\n  group_left (nodename)\r\n  max by (job,instance, nodename) (node_uname_info)",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Disk Used (%) by Node",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${K8_datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "${__field.labels.nodename}",
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "dark-orange",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 0,
+        "y": 38
+      },
+      "id": 70,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${K8_datasource}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "sum by (job, instance, nodename) (\r\n  rate(node_cpu_seconds_total{mode!=\"idle\"}[1m])\r\n  * on (instance)\r\n    group_left (nodename)\r\n    max by (job, instance, nodename) (node_uname_info)\r\n)",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "CPU Used (cores) by Node",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${K8_datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "dashed"
+            }
+          },
+          "displayName": "${__field.labels.nodename}",
+          "fieldMinMax": false,
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "dark-orange",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 7,
+        "y": 38
+      },
+      "id": 72,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${K8_datasource}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "(\r\n  node_memory_MemTotal_bytes\r\n  - node_memory_MemAvailable_bytes\r\n)\r\n/\r\n1024 / 1024 / 1024\r\n* on (instance)\r\n  group_left (nodename)\r\n  max by (instance, nodename) (node_uname_info)",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "Memory Used (GB) by Node",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${K8_datasource}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "${__field.labels.nodename}",
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80.0002
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 14,
+        "y": 38
+      },
+      "id": 71,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${K8_datasource}"
+          },
+          "editorMode": "code",
+          "expr": "sum by (job,instance, nodename) (\r\n  node_filesystem_size_bytes{\r\n    fstype!~\"tmpfs|overlay|squashfs\"\r\n  }\r\n  -\r\n  node_filesystem_free_bytes{\r\n    fstype!~\"tmpfs|overlay|squashfs\"\r\n  }\r\n)\r\n/\r\n1024 / 1024 / 1024\r\n* on (instance)\r\n  group_left (nodename)\r\n  max by (job,instance, nodename) (node_uname_info)",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Disk Used (GB) by Node",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${K8_datasource}"
+      },
+      "description": "High value means the container is frequently throttled.\nThis indicates CPU starvation, which can degrade performance.\nConsider: Increase CPU limits, Optimize workload, Use autoscaling.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "${__field.labels.label_arcgis_gis_service_name}, ${__field.labels.pod}",
+          "mappings": [],
+          "noValue": "Healthy. No pods restarted during this time interval.",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 0,
+        "y": 48
+      },
+      "id": 56,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${K8_datasource}"
+          },
+          "editorMode": "code",
+          "expr": "sum by (job, pod, label_arcgis_gis_service_name) (\r\n  rate(\r\n    container_cpu_cfs_throttled_periods_total{\r\n      container!=\"\",\r\n    }[1m]\r\n  )\r\n  * on (pod, namespace)\r\n    group_left (label_arcgis_gis_service_name)\r\n    kube_pod_labels{\r\n      namespace=\"arcgis\",\r\n      label_arcgis_gis_service_name!=\"\"\r\n    }\r\n)",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "CPU Throttling Rate by ArcGIS Service and Pod",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${K8_datasource}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "${__field.labels.label_arcgis_gis_service_name}, ${__field.labels.pod},${__field.labels.node}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 7,
+        "y": 48
+      },
+      "id": 48,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${K8_datasource}"
+          },
+          "editorMode": "code",
+          "expr": "sum by (job, pod, namespace, node, label_arcgis_gis_service_name) (\r\n  (\r\n    rate(\r\n      container_network_transmit_bytes_total{\r\n        node=~\"$nodeName\",\r\n        pod=~\"$pod\"\r\n      }[1m]\r\n    )\r\n    / 1024 / 1024\r\n  )\r\n  * on (pod, namespace)\r\n    group_left(label_arcgis_gis_service_name)\r\n    kube_pod_labels{\r\n      namespace=\"arcgis\",\r\n      label_arcgis_gis_service_name!=\"\"\r\n    }\r\n)\r\n> 0",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Network (Mbps) by Service, Pod, Node",
+      "type": "timeseries"
     },
     {
       "collapsed": false,
@@ -3258,7 +3255,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 58
       },
       "id": 51,
       "panels": [],
@@ -3333,7 +3330,7 @@
         "h": 10,
         "w": 7,
         "x": 0,
-        "y": 9
+        "y": 59
       },
       "id": 67,
       "options": {
@@ -3442,7 +3439,7 @@
         "h": 10,
         "w": 7,
         "x": 7,
-        "y": 9
+        "y": 59
       },
       "id": 68,
       "options": {
@@ -3549,7 +3546,7 @@
         "h": 10,
         "w": 7,
         "x": 14,
-        "y": 9
+        "y": 59
       },
       "id": 69,
       "options": {
@@ -3654,7 +3651,7 @@
         "h": 10,
         "w": 7,
         "x": 0,
-        "y": 19
+        "y": 69
       },
       "id": 73,
       "options": {
@@ -3758,7 +3755,7 @@
         "h": 10,
         "w": 7,
         "x": 7,
-        "y": 19
+        "y": 69
       },
       "id": 74,
       "options": {
@@ -3862,7 +3859,7 @@
         "h": 10,
         "w": 7,
         "x": 14,
-        "y": 19
+        "y": 69
       },
       "id": 77,
       "options": {
@@ -3967,7 +3964,7 @@
         "h": 10,
         "w": 7,
         "x": 7,
-        "y": 29
+        "y": 79
       },
       "id": 75,
       "options": {
@@ -4105,7 +4102,7 @@
         "h": 14,
         "w": 24,
         "x": 0,
-        "y": 39
+        "y": 89
       },
       "id": 57,
       "options": {
@@ -4315,8 +4312,8 @@
       },
       {
         "current": {
-          "text": "ArcGIS_K8_AWS",
-          "value": "afc8yrlxc9qtcd"
+          "text": "K8_AWS",
+          "value": "afc8xe7s7d7uoa"
         },
         "label": "K8 datasource",
         "name": "K8_datasource",
@@ -4328,11 +4325,9 @@
       },
       {
         "current": {
-          "text": [
-            "kubernetes-pods"
-          ],
+          "text": "All",
           "value": [
-            "kubernetes-pods"
+            "$__all"
           ]
         },
         "datasource": {
@@ -4479,7 +4474,9 @@
       {
         "current": {
           "text": "All",
-          "value": "$__all"
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": {
           "type": "prometheus",
@@ -4502,11 +4499,9 @@
       },
       {
         "current": {
-          "text": [
-            "Events"
-          ],
+          "text": "All",
           "value": [
-            "Events"
+            "$__all"
           ]
         },
         "datasource": {
@@ -4538,5 +4533,5 @@
   "timezone": "America/Los_Angeles",
   "title": "ArcGIS Enterprise 12.1 on Kubernetes: System Diagnostics",
   "uid": "061854ef-2b89-4c74-b16e-6d73351344d8",
-  "version": 101
+  "version": 106
 }
